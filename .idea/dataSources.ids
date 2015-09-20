@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - sombra@localhost" uuid="a25da105-c069-49cb-9c16-5b517581764c">
+    <database-info product="MySQL" version="5.5.44-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="sombra"/>
+    <table name="Category" schema="" catalog="sombra" type="TABLE">
+      <column name="catId" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="catName" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="catId"/>
+      <exported-key name="Lot_fk0" table="Lot" schema="" catalog="sombra" columns="catId"/>
+    </table>
+    <table name="City" schema="" catalog="sombra" type="TABLE">
+      <column name="cityId" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="cityName" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="cityId"/>
+      <exported-key name="Lot_fk2" table="Lot" schema="" catalog="sombra" columns="cityId"/>
+    </table>
+    <table name="Lot" schema="" catalog="sombra" type="TABLE">
+      <column name="lotId" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="lotName" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12" def="J0xvdCBuYW1lJw=="/>
+      <column name="description" sqlType="VARCHAR" precision="200" scale="0" nullable="false" jdbcType="12" def="J0xvdCBkZXNjcmlwdGlvbic="/>
+      <column name="catId" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="usrId" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="cityId" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="picture" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="available" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="lotId"/>
+      <foreign-key name="Lot_fk2" columns="cityId" ref-table="City" ref-schema="" ref-catalog="sombra" ref-columns="cityId" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="Lot_fk0" columns="catId" ref-table="Category" ref-schema="" ref-catalog="sombra" ref-columns="catId" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="Lot_fk1" columns="usrId" ref-table="User" ref-schema="" ref-catalog="sombra" ref-columns="usrId" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="Lot_fk0" unique="false" columns="catId"/>
+      <index name="Lot_fk1" unique="false" columns="usrId"/>
+      <index name="Lot_fk2" unique="false" columns="cityId"/>
+    </table>
+    <table name="User" schema="" catalog="sombra" type="TABLE">
+      <column name="usrId" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="email" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="firstName" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="lastName" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="enabled" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6" def="MQ=="/>
+      <column name="role" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="usrId"/>
+      <exported-key name="Lot_fk1" table="Lot" schema="" catalog="sombra" columns="usrId"/>
+    </table>
+  </data-source>
+</component>
